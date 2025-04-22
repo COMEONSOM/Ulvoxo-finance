@@ -109,3 +109,20 @@
     transform: scale(1);
   }
 }
+/* Star button */
+.star-btn {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #cccccc;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.star-btn.starred {
+  color: gold;
+}
