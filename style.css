@@ -1,3 +1,6 @@
+/*──────────────────────────────────────────────────────────────────
+  :root VARIABLES
+──────────────────────────────────────────────────────────────────*/
 :root {
   /* Neumorphism color tokens */
   --bg-white: #e0e0e0;            /* soft card/segment background */
@@ -11,6 +14,11 @@
   --hover-lift: -4px;
   --border-radius: 1rem;
   --highlight: #e74c3c;
+
+  /* Header-specific */
+  --header-max-width: 1600px;   /* same as .container */
+  --header-hpad: 2rem;          /* horizontal padding */
+  --logo-width: 100px;          /* your logo size */
 }
 
 /*===============================
@@ -19,6 +27,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: 'Helvetica Neue', sans-serif;
   background-color: var(--background-color);
 }
@@ -32,14 +41,12 @@ body {
   margin: 0 auto;
 }
 
-/* Lock container to exactly 5 columns on very wide screens */
 @media (min-width: 1200px) {
   .container {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
-/* Ensure that direct child .segment spans full width */
 .container > .segment {
   grid-column: 1 / -1;
 }
@@ -65,17 +72,17 @@ body {
   font-weight: bold;
   margin: 2rem 0 1rem;
   padding-left: 1rem;
-  color: var(--text-main);       /* was var(--bg-white) */
+  color: var(--text-main);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Optional per-segment subtle variant (all use same bg in neumorphism) */
 .equity-segment,
 .gold-segment,
 .debt-segment,
 .ai-segment {
   background: var(--bg-white);
-  box-shadow: inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff;
+  box-shadow: inset 4px 4px 8px #bebebe,
+              inset -4px -4px 8px #ffffff;
 }
 
 /*===============================
@@ -91,17 +98,18 @@ body {
   box-shadow: var(--shadow-card);
   padding: 1rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease,
+              box-shadow 0.3s ease;
   text-align: center;
   min-height: 50px;
 }
 
 .card:hover {
   transform: translateY(var(--hover-lift));
-  box-shadow: inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff;
+  box-shadow: inset 4px 4px 8px #bebebe,
+              inset -4px -4px 8px #ffffff;
 }
 
-/* Card title */
 .card h2 {
   font-size: 1.25rem;
   font-weight: 600;
@@ -110,21 +118,20 @@ body {
   line-height: 1.2;
 }
 
-/* Card subtitle/info */
 .card p {
   font-size: 0.9rem;
   color: var(--text-sub);
   margin: 0.2rem 0;
 }
 
-/* Card image container */
 .card .img-wrapper {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 0.75rem;
   margin-top: 0.5rem;
-  box-shadow: inset 6px 6px 10px #bebebe, inset -6px -6px 10px #ffffff;
+  box-shadow: inset 6px 6px 10px #bebebe,
+              inset -6px -6px 10px #ffffff;
 }
 
 .card .img-wrapper img {
@@ -135,7 +142,7 @@ body {
 }
 
 /*===============================
-  LIVE INDICATOR (unchanged)
+  LIVE INDICATOR
 ================================*/
 .live {
   position: absolute;
@@ -151,14 +158,15 @@ body {
 .live::after {
   content: "";
   position: absolute;
-  left: 0; bottom: 0;
-  width: 100%; height: 2px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--highlight), transparent);
   background-size: 200% 100%;
   animation: gradSwipe 1.5s ease-in-out infinite;
 }
 
-/* Keyframes */
 @keyframes gradSwipe {
   to { background-position: 100% 0; }
 }
@@ -169,7 +177,7 @@ body {
 }
 
 /*===============================
-  STAR BUTTON (unchanged)
+  STAR BUTTON
 ================================*/
 .star-btn {
   position: absolute;
@@ -198,16 +206,10 @@ body {
   margin-bottom: 10px;
   text-indent: -9999px;
 }
-/*===================================
-  SITE HEADER (Fixed Width + Responsive Wrap)
-===================================*/
-:root {
-  --header-max-width: 1600px;   /* same as .container */
-  --header-hpad: 2rem;          /* horizontal padding */
-  --logo-width: 100px;          /* your logo size */
-}
 
-/* 1) Constrain header to full-width container */
+/*===================================
+  SITE HEADER
+===================================*/
 .site-header {
   position: relative;
   width: 100%;
@@ -215,14 +217,13 @@ body {
   max-width: var(--header-max-width);
   margin: 0 auto 2rem;
   padding: 1.5rem var(--header-hpad);
-  background: #000;
+  background: #1c1c1c;
   box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* 2) Logo stays absolute at left */
 .site-header .logo {
   position: absolute;
   left: var(--header-hpad);
@@ -230,7 +231,6 @@ body {
   height: auto;
 }
 
-/* 3) Header-text spans full header width */
 .site-header .header-text {
   display: block;
   width: 100%;
@@ -240,29 +240,25 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.05em;
-  white-space: nowrap;         /* no wrap by default */
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* 4) On small screens, allow wrapping into two lines */
 @media (max-width: 600px) {
   :root {
     --logo-width: 60px;
     --header-hpad: 1rem;
   }
-
   .site-header {
     padding: 1rem var(--header-hpad);
   }
-
   .site-header .logo {
     width: var(--logo-width);
     left: var(--header-hpad);
   }
-
   .site-header .header-text {
-    white-space: normal;       /* enable wrap */
+    white-space: normal;
     line-height: 1.2;
     font-size: 1rem;
     padding: 0 calc(var(--logo-width) + var(--header-hpad));
@@ -270,57 +266,134 @@ body {
 }
 
 /*===================================
-  SITE FOOTER
+  SITE FOOTER (BLOCK-LIKE LOOK)
 ===================================*/
 .site-footer {
-  background: #000;
-  padding: 1rem 2rem;
-  margin: 2rem auto 1rem;
+  background: #1c1c1c;
+  color: #ffffff;
   max-width: 1600px;
+  padding: 2rem;
+  box-shadow: inset 4px 4px 8px #141414,
+              inset -4px -4px 8px #2a2a2a;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Top columns */
+.footer-top {
+  display: flex;
+  gap: 4rem;
+  flex: 0 1 auto;
+}
+
+.footer-col h3 {
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.site-footer .social-links {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-/* Social icons */
 .site-footer .social-links a {
-  display: inline-block;
-  margin-right: 1rem;
-  transition: transform 0.2s;
-}
-.site-footer .social-links img {
-  width: 24px;
-  height: 24px;
-}
-.site-footer .social-links a:hover {
-  transform: translateY(-2px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 25%;
+  background: #000;
+  box-shadow: 4px 4px 6px #000,
+              -4px -4px 6px #2a2a2a;
+  transition: transform 0.2s ease,
+              box-shadow 0.3s ease,
+              background 0.3s;
 }
 
-/* Contact email */
-.site-footer .contact-info a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
+.site-footer .social-links a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px var(--highlight);
 }
-.site-footer .contact-info{
+
+.site-footer .social-links img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Middle slogan */
+.footer-slogan {
+  flex: 1 1 50%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;      /* space between icon and text */
+  justify-content: center;
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  text-align: center;
 }
-.site-footer .contact-info .Gmail-icon{
-  width: 24px;      /* adjust as needed */
-  height: 24px;
-  object-fit: contain;
+
+/* Bottom row */
+.footer-bottom {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
 }
-.site-footer .contact-info .Gmail-icon a:hover{
-  transform: translateY(-2px);
+
+.footer-links {
+  display: flex;
+  align-items: center;
 }
-.site-footer .contact-info a:hover {
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
   text-decoration: underline;
 }
-.site-footer .social-links p {
-  color:#ffffff;
+
+.footer-links .divider {
+  margin: 0 0.5rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Responsive footer reflow */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-slogan {
+    order: 2;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .footer-bottom {
+    order: 3;
+    margin-top: 2rem;
+  }
 }

@@ -1,46 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-  /* ───── Typewriter with Letter-by-Letter Deletion ───── */
-  const headerEl = document.querySelector('.header-text');
-  if (headerEl) {
-    const fullText = headerEl.textContent.trim();
+  /* ───────────── Shared Sleep Helper ───────────── */
+  const wait = ms => new Promise(res => setTimeout(res, ms));
 
-    // Simple sleep helper
-    const wait = ms => new Promise(res => setTimeout(res, ms));
+  /* ───────────── Typewriter on Header & Footer ───────────── */
+  function attachTypewriter(el) {
+    const fullText = el.textContent.trim();
 
     async function runTypewriter() {
-      // 1) Type in characters
-      headerEl.textContent = '';
-      for (let i = 0; i < fullText.length; i++) {
-        headerEl.textContent += fullText[i];
-        await wait(80);
+      // 1) Type in
+      el.textContent = '';
+      for (let ch of fullText) {
+        el.textContent += ch;
+        await wait(75);
       }
 
-      // 2) Brief pause at full text
+      // 2) Pause
       await wait(500);
 
-      // 3) Delete one character at a time
-      while (headerEl.textContent.length > 0) {
-        headerEl.textContent = headerEl.textContent.slice(0, -1);
+      // 3) Delete
+      while (el.textContent.length > 0) {
+        el.textContent = el.textContent.slice(0, -1);
         await wait(80);
       }
 
-      // 4) Wait 30 seconds, then loop
-      await wait(15000);
+      // 4) Wait then loop
+      await wait(7500);
       runTypewriter();
     }
 
     runTypewriter();
   }
 
-  /* ───── Card-Star Logic (Optimized) ───── */
+  // target both header-text and footer-slogan
+  document
+    .querySelectorAll('.header-text, .footer-slogan')
+    .forEach(el => attachTypewriter(el));
+
+
+  /* ───────────── Card‑Star Logic (unchanged) ───────────── */
   const maxStars   = 5;
   const storageKey = 'starredCards';
   let starredIds   = JSON.parse(localStorage.getItem(storageKey)) || [];
-
-  // Cache map: cardId → its segment element
   const cardSegmentMap = new Map();
 
-  // 1) Record original index & cache segment for each card
   document.querySelectorAll('.segment').forEach(segment => {
     segment.querySelectorAll('.card').forEach((card, idx) => {
       card.dataset.origIndex = idx;
@@ -48,23 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2) Initialize starred buttons
   starredIds.forEach(id => {
     const card = document.querySelector(`.card[data-id="${id}"]`);
     if (card) card.querySelector('.star-btn').classList.add('starred');
   });
 
-  // 3) One-time full reorder per segment on load
-  document.querySelectorAll('.segment').forEach(segment => {
-    reorderSegment(segment);
-  });
+  document.querySelectorAll('.segment').forEach(reorderSegment);
 
-  // 4) Wire up each card
   document.querySelectorAll('.card').forEach(card => {
     const id      = card.dataset.id;
     const starBtn = card.querySelector('.star-btn');
 
-    // a) Click card to open URL (unless star clicked)
+    // open on card click
     card.addEventListener('click', e => {
       if (!e.target.classList.contains('star-btn')) {
         const url = card.dataset.url?.trim();
@@ -72,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // b) Star/unstar toggle
+    // star/unstar
     starBtn.addEventListener('click', e => {
       e.stopPropagation();
       const idx = starredIds.indexOf(id);
@@ -94,49 +91,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ───── Helpers ───── */
-
-  // Full segment reorder (initial load)
   function reorderSegment(segment) {
     const cards = Array.from(segment.querySelectorAll('.card'));
-
     const starred   = cards
       .filter(c => starredIds.includes(c.dataset.id))
       .sort((a, b) => starredIds.indexOf(a.dataset.id) - starredIds.indexOf(b.dataset.id));
-
     const unstarred = cards
       .filter(c => !starredIds.includes(c.dataset.id))
       .sort((a, b) => Number(a.dataset.origIndex) - Number(b.dataset.origIndex));
 
-    ;[...starred, ...unstarred].forEach(c => segment.appendChild(c));
+    [...starred, ...unstarred].forEach(c => segment.appendChild(c));
   }
 
-  // Move a single card to its new spot
   function repositionCard(card) {
-    const segment   = cardSegmentMap.get(card.dataset.id);
+    const segment = cardSegmentMap.get(card.dataset.id);
     if (!segment) return;
 
     const isStarred = starredIds.includes(card.dataset.id);
     const cards     = Array.from(segment.children).filter(el => el.matches('.card'));
 
     if (isStarred) {
-      // Insert before first unstarred
       const firstUnstar = cards.find(c => !starredIds.includes(c.dataset.id));
       if (firstUnstar) segment.insertBefore(card, firstUnstar);
       else             segment.appendChild(card);
     } else {
-      // Return among unstarred in original order
       const origIdx = Number(card.dataset.origIndex);
       const start   = cards.findIndex(c => !starredIds.includes(c.dataset.id));
       let beforeNode = null;
-
       for (let i = start; i < cards.length; i++) {
         if (Number(cards[i].dataset.origIndex) > origIdx) {
           beforeNode = cards[i];
           break;
         }
       }
-
       if (beforeNode) segment.insertBefore(card, beforeNode);
       else            segment.appendChild(card);
     }
