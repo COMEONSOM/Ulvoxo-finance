@@ -2,119 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <img src="company-logo.png" alt="Company Logo" class="logo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Big Pocket.com</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- Company Logo -->
+  <header class="header">
+    <img src="assets/company-logo.png" alt="Company Logo" class="logo" />
+  </header>
+
+  <!-- Main Container -->
   <div class="container" id="cardContainer">
-    <!-- Repeat this section for each “thing” you’re aggregating -->
-    <section class="card" data-id="dividends" data-url="https://klasterme.in/upcoming-dividends">
-      <button class="star-btn">☆</button>
-      <h2>Upcoming Dividends</h2>
-      <p class="live">LIVE</p>
-      <div class="img-wrapper">
-        <img src="dividendstock.png" alt="dividends" />
-      </div>
+
+    <!-- =========================
+         Equity Segment
+    ========================== -->
+    <section class="segment equity-segment">
+      <h1 class="segment-title">Equity Segment</h1>
+
+      <!-- Card: Upcoming Dividends -->
+      <article class="card" data-id="dividends" data-url="https://klasterme.in/upcoming-dividends">
+        <button class="star-btn">☆</button>
+        <h2>Upcoming Dividends</h2>
+        <p class="live">LIVE</p>
+        <div class="img-wrapper">
+          <img src="assets/dividendstock.png" alt="Upcoming Dividends" />
+        </div>
+      </article>
+
+      <!-- Card: Upcoming IPOs -->
+      <article class="card" data-id="ipos" data-url="https://zerodha.com/ipo/">
+        <button class="star-btn">☆</button>
+        <h2>Upcoming IPOs</h2>
+        <p class="live">LIVE</p>
+        <div class="img-wrapper">
+          <img src="assets/up.png" alt="Upcoming IPOs" />
+        </div>
+      </article>
+
+      <!-- Card: US Stock Market -->
+      <article class="card" data-id="usmarket" data-url="https://tradingeconomics.com/united-states/stock-market">
+        <button class="star-btn">☆</button>
+        <h2>US Stock Market</h2>
+        <p class="live">LIVE</p>
+        <div class="img-wrapper">
+          <img src="assets/us.png" alt="US Stock Market" />
+        </div>
+      </article>
+
+      <!-- Card: Market Analysis -->
+      <article class="card" data-id="analysis" data-url="https://www.nseindia.com/">
+        <button class="star-btn">☆</button>
+        <h2>Market Analysis</h2>
+        <p class="live">LIVE</p>
+        <div class="img-wrapper">
+          <img src="assets/ana.png" alt="Market Analysis" />
+        </div>
+      </article>
+
+      <!-- Card: ASP Calculator -->
+      <article class="card" data-id="asp" data-url="https://comeonsom.github.io/Average-Calculator/">
+        <button class="star-btn">☆</button>
+        <h2>ASP Calculator</h2>
+        <div class="img-wrapper">
+          <img src="assets/Asp.webp" alt="ASP Calculator" />
+        </div>
+      </article>
+
+      <!-- Card: Brokerage Calculator -->
+      <article class="card" data-id="brokerage" data-url="https://zerodha.com/brokerage-calculator/">
+        <button class="star-btn">☆</button>
+        <h2>Brokerage Calculator</h2>
+        <div class="img-wrapper">
+          <img src="assets/BCalculate.png" alt="Brokerage Calculator" />
+        </div>
+      </article>
+
+      <!-- Card: SIP Calculator -->
+      <article class="card" data-id="sip" data-url="https://comeonsom.github.io/Investment-Calculator/">
+        <button class="star-btn">☆</button>
+        <h2>SIP Calculator</h2>
+        <div class="img-wrapper">
+          <img src="assets/SIP.png" alt="SIP Calculator" />
+        </div>
+      </article>
     </section>
 
-    <section class="card" data-id="ipos" data-url="https://zerodha.com/ipo/">
-      <button class="star-btn">☆</button>
-      <h2>Upcoming IPOs</h2>
-      <p class="live">LIVE</p>
-      <div class="img-wrapper">
-        <img src="up.png" alt="ipo" />
-      </div>
+    <!-- =========================
+         Gold Segment
+    ========================== -->
+    <section class="segment gold-segment">
+      <h1 class="segment-title">Gold Segment</h1>
+
+      <!-- Card: Realtime Gold Price -->
+      <article class="card" data-id="gold" data-url="https://groww.in/gold-rates">
+        <button class="star-btn">☆</button>
+        <h2>Realtime Gold Price</h2>
+        <p class="live">LIVE</p>
+        <div class="img-wrapper">
+          <img src="assets/gold.png" alt="Realtime Gold Price" />
+        </div>
+      </article>
+
+      <!-- Card: GJP Calculator -->
+      <article class="card" data-id="GJPC" data-url="https://comeonsom.github.io/Gold-Jewellery-Price-Calculator/">
+        <button class="star-btn">☆</button>
+        <h2>GJP Calculator</h2>
+        <div class="img-wrapper">
+          <img src="assets/GJPC.png" alt="Gold Jewellery Price Calculator" />
+        </div>
+      </article>
+
+      <!-- Card: BIS Care App -->
+      <article class="card" data-id="bis" data-url="https://www.bis.gov.in/bis-apps/">
+        <button class="star-btn">☆</button>
+        <h2>BIS Care App</h2>
+        <div class="img-wrapper">
+          <img src="assets/bis.png" alt="BIS App" />
+        </div>
+      </article>
     </section>
 
-    <section class="card" data-id="gold" data-url="https://groww.in/gold-rates">
-      <button class="star-btn">☆</button>
-      <h2>Realtime Gold Price</h2>
-      <p class="live">LIVE</p>
-      <div class="img-wrapper">
-        <img src="gold.png" alt="gold" />
-      </div>
+    <!-- =========================
+         Debt Tools Segment
+    ========================== -->
+    <section class="segment debt-segment">
+      <h1 class="segment-title">Debt Tools</h1>
+
+      <!-- Card: Credit Card EMI Calculator -->
+      <article class="card" data-id="CreditCard" data-url="https://comeonsom.github.io/Credit-Card-EMI-Calculator/">
+        <button class="star-btn">☆</button>
+        <h2>CCEMI Calculator</h2>
+        <div class="img-wrapper">
+          <img src="assets/CreditCard.png" alt="Credit Card EMI Calculator" />
+        </div>
+      </article>
     </section>
 
-    <section class="card" data-id="usmarket" data-url="https://tradingeconomics.com/united-states/stock-market">
-      <button class="star-btn">☆</button>
-      <h2>US Stock Market</h2>
-      <p class="live">LIVE</p>
-      <div class="img-wrapper">
-        <img src="us.png" alt="us-market" />
-      </div>
+    <!-- =========================
+         AI Tools Segment
+    ========================== -->
+    <section class="segment ai-segment">
+      <h1 class="segment-title">AI Tools</h1>
+
+      <!-- Card: ForLoop AI -->
+      <article class="card" data-id="ai" data-url="https://comeonsom.github.io/X-by-ForLoop.com/">
+        <button class="star-btn">☆</button>
+        <h2>ForLoop AI</h2>
+        <div class="img-wrapper">
+          <img src="assets/ai.png" alt="ForLoop AI Tool" />
+        </div>
+      </article>
     </section>
 
-    <section class="card" data-id="analysis" data-url="https://www.nseindia.com/">
-      <button class="star-btn">☆</button>
-      <h2>Market Analysis</h2>
-      <p class="live">LIVE</p>
-      <div class="img-wrapper">
-        <img src="ana.png" alt="market analysis" />
-      </div>
-    </section>
+    <!-- =========================
+         Experimental Tools (Commented Out)
+    ========================== -->
+    <!--
+    <section class="segment misc-segment">
+      <h1 class="segment-title">Experimental Tools</h1>
 
-    <section class="card" data-id="brokerage" data-url="https://zerodha.com/brokerage-calculator/">
-      <button class="star-btn">☆</button>
-      <h2>Brokerage Calculator</h2>
-      <div class="img-wrapper">
-        <img src="BCalculate.png" alt="brokerage" />
-      </div>
+      <article class="card" data-id="another" data-url="https://another.com">
+        <button class="star-btn">☆</button>
+        <h2>Another Service</h2>
+        <p class="live">LIVE</p>
+        <div class="img-wrapper">
+          <img src="assets/another.jpg" alt="Another Service" />
+        </div>
+      </article>
     </section>
+    -->
 
-    <section class="card" data-id="sip" data-url="https://comeonsom.github.io/Investment-Calculator/">
-      <button class="star-btn">☆</button>
-      <h2>SIP Calculator</h2>
-      <div class="img-wrapper">
-        <img src="SIP.png" alt="SIP" />
-      </div>
-    </section>
+  </div>
 
-    <section class="card" data-id="asp" data-url=" https://comeonsom.github.io/Average-Calculator/">
-      <button class="star-btn">☆</button>
-      <h2>ASP Calculator</h2>
-      <div class="img-wrapper">
-        <img src="Asp.webp" alt="Asp" />
-      </div>
-    </section>
-
-    <section class="card" data-id="GJPC" data-url=" https://comeonsom.github.io/Gold-Jewellery-Price-Calculator/">
-      <button class="star-btn">☆</button>
-      <h2>Gold Jewellery Price Calculator</h2>
-      <div class="img-wrapper">
-        <img src="GJPC.png" alt="GJPC" />
-      </div>
-    </section>
-
-    <section class="card" data-id="CreditCard" data-url="https://comeonsom.github.io/Credit-Card-EMI-Calculator/">
-      <button class="star-btn">☆</button>
-      <h2>Credit Card EMI Calculator</h2>
-      <div class="img-wrapper">
-        <img src="CreditCard.png" alt="credit-card" />
-      </div>
-    </section>
-
-    <section class="card" data-id="ai" data-url="https://comeonsom.github.io/X-by-ForLoop.com/">
-      <button class="star-btn">☆</button>
-      <h2>ForLoop</h2>
-      <div class="img-wrapper">
-        <img src="ai.png" alt="ai" />
-      </div>
-    </section>
-
-    <section class="card" data-id="another" data-url="https://another.com">
-      <button class="star-btn">☆</button>
-      <h2>Another Service</h2>
-      <p>Some info about another service.</p>
-      <p class="live">LIVE</p>
-      <div class="img-wrapper">
-        <img src="another.jpg" alt="another" />
-      </div>
-    </section>
-
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
-  
