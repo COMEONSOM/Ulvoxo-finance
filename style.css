@@ -197,5 +197,113 @@ body {
   border-radius: 50%;
   margin-bottom: 10px;
   text-indent: -9999px;
+}
+/* Adjust these to match your logo size & header padding */
+:root {
+  --logo-width: 100px;    /* same as .site-header .logo width */
+  --header-hpad: 2rem;    /* same as .site-header horizontal padding */
+}
+
+/*===================================
+  SITE HEADER (Logo + Centered Text)
+===================================*/
+.site-header {
+  position: relative;
+  background: #000;
+  padding: 1.5rem var(--header-hpad);
   box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo in top-left */
+.site-header .logo {
+  position: absolute;
+  left: var(--header-hpad);
+  width: var(--logo-width);
+  height: auto;
+  border-radius: 50%;
+}
+
+/* Text spans full width but has side-padding = logo + padding */
+.site-header .header-text {
+  width: 100%;
+  padding: 0 calc(var(--logo-width) + var(--header-hpad));
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* if it’s very long */
+}
+
+/* Small-screen tweaks */
+@media (max-width: 600px) {
+  :root {
+    --logo-width: 60px;
+    --header-hpad: 1rem;
+  }
+  .site-header {
+    padding: 1rem var(--header-hpad);
+  }
+  .site-header .header-text {
+    font-size: 0.9rem;
+    padding: 0 calc(var(--logo-width) + var(--header-hpad));
+  }
+}
+
+/*===================================
+  SITE FOOTER
+===================================*/
+.site-footer {
+  background: var(--background-color);
+  padding: 1rem 2rem;
+  margin: 2rem auto 1rem;
+  max-width: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Social icons */
+.site-footer .social-links a {
+  display: inline-block;
+  margin-right: 1rem;
+  transition: transform 0.2s;
+}
+.site-footer .social-links img {
+  width: 24px;
+  height: 24px;
+}
+.site-footer .social-links a:hover {
+  transform: translateY(-2px);
+}
+
+/* Contact email */
+.site-footer .contact-info a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.site-footer .contact-info{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;      /* space between icon and text */
+}
+.site-footer .contact-info .Gmail-icon{
+  width: 24px;      /* adjust as needed */
+  height: 24px;
+  object-fit: contain;
+}
+.site-footer .contact-info .Gmail-icon a:hover{
+  transform: translateY(-2px);
+}
+.site-footer .contact-info a:hover {
+  text-decoration: underline;
 }
