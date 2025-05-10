@@ -20,6 +20,7 @@ html {
   --text-live: #ff0000;
   --text-starred: gold;
   --background-color: #d3eaf7;
+  --navbar-bg:#2c3e50;
   --shadow-card: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
   --hover-lift: -4px;
   --border-radius: 1rem;
@@ -223,10 +224,9 @@ body {
   width: 100%;
   height: 100px;
   max-width: var(--header-max-width);
-  margin: 0 auto 2rem;
+  margin: 0 auto 0.2rem;
   padding: 1.5rem var(--header-hpad);
   background: #1c1c1c;
-  box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,3 +411,73 @@ body {
     margin-top: 2rem;
   }
 }
+/* ==============================
+   NEUMORPHIC NAVBAR
+   ============================== */
+
+   .site-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    background: var(--navbar-bg);
+    max-width: 1600px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Inner flex container */
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem 2rem;
+  }
+  
+  /* Menu */
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  .navbar-menu li a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  /* Soft hover effect */
+  .navbar-menu li a:hover {
+    background: var(--bg-white);
+    box-shadow: inset 4px 4px 8px #bebebe,
+                inset -4px -4px 8px #ffffff;
+    color: #000000;
+  }
+  
+  /* On scroll, deepen the shadow */
+  .site-navbar.sticky {
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.05),
+                var(--shadow-card);
+  }
+  
+  /* Mobile response */
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .navbar-menu {
+      justify-content: space-around;
+      margin-top: 1rem;
+    }
+    .navbar-menu li a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

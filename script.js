@@ -128,4 +128,23 @@ document.addEventListener('DOMContentLoaded', () => {
       else            segment.appendChild(card);
     }
   }
+  /* ───────────── Navbar Load & Sticky ───────────── */
+  fetch('navbar.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('navbar-container').innerHTML = html;
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.site-navbar');
+        nav && nav.classList.toggle('sticky', window.scrollY > 10);
+      });
+    })
+    .catch(err => console.error('Navbar load error:', err));
+
+  /* ───────────── Feedback Button ───────────── */
+  const fb = document.getElementById('feedback-btn');
+  if (fb) {
+    fb.addEventListener('click', () => {
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSeWE8WgYihcfL5IQLv_qKCfGrwO5QQJMOua2QIvD4XFzBM4hQ/viewform?usp=header', '_blank');
+    });
+  }
 });
