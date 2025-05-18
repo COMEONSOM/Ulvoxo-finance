@@ -1,19 +1,18 @@
 <!-- navbar.html -->
+<nav class="navbar">
+  <a href="/" class="nav-item">Home</a>
+  <!-- Login button (shows only if not logged in) -->
+  <a id="loginBtn" href="login-app/login.html">Login</a>
 
-<nav class="site-navbar">
-    <div class="navbar-container">
-      <ul class="navbar-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#equity">Equity</a></li>
-        <li><a href="#gold">Gold</a></li>
-        <li><a href="#debt">Debt</a></li>
-        <li><a href="#ai">AI Tools</a></li>
-        <li>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWE8WgYihcfL5IQLv_qKCfGrwO5QQJMOua2QIvD4XFzBM4hQ/viewform?usp=header" target="_blank">
-            Feedback
-          </a>
-        </li>
-      </ul>
+  <!-- Logout button (shows only if logged in) -->
+  <button id="logoutBtn">Logout</button>
+
+  <!-- Profile section (shows only if logged in) -->
+  <div id="profileSection">
+    <img id="userPic" src="" alt="Profile Picture"/>
+    <div>
+      <div id="userName"></div>
+      <div id="userEmail"></div>
     </div>
-  </nav>
-  
+  </div>
+</nav>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+
+  <!-- YOUR auth logic -->
+  <script src="login.js"></script>
+
+  <!-- Your main site script (which injects navbar.html) -->
+  <script src="/script.js"></script>
+
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BIG-Pocket • Sign In</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="login.css"/>
+
+  <!-- ✨ Anime.js (SVG morphing) + Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+</head>
+<body class="auth-page">
+
+  <!-- Brand header -->
+  <header class="brand">
+    <img src="/assets/companylogo.png" alt="BIG-Pocket Logo" class="logo"/>
+    <h1>BIG Pocket</h1>
+  </header>
+
+  <!-- Loader (SVG so we can morph it into a ✔) -->
+  <div id="global-loader" class="loader hidden" aria-label="Loading">
+    <svg width="52" height="52" viewBox="0 0 40 40" fill="none"
+         stroke="#3498db" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path id="loader-path"
+            d="M20 3a17 17 0 1 0 17 17"
+            stroke-dasharray="80"
+            stroke-dashoffset="60">
+        <animateTransform attributeName="transform" type="rotate"
+                          from="0 20 20" to="360 20 20"
+                          dur="1s" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+
+  <!-- Toast -->
+  <div id="message" role="alert" class="toast"></div>
+
+  <!-- Sign‑in card -->
+  <main class="card">
+    <h2>Sign in with Google</h2>
+    <button id="googleSignInBtn" class="google-btn" type="button">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo"/>
+      Continue with Google
+    </button>
+  </main>
+
+  <footer class="footer">© 2025 BIG Pocket</footer>
+</body>
+</html>
