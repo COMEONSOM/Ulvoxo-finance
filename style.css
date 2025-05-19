@@ -25,6 +25,9 @@ html {
   --hover-lift: -4px;
   --border-radius: 1rem;
   --highlight: #e74c3c;
+  --neumo-bg: #1a1c23;            /* same as --color-surface */
+  --neumo-shadow-dark: rgba(0,0,0,0.6);
+  --neumo-shadow-light: rgba(255,255,255,0.05);
 
   /* Header-specific */
   --header-max-width: 1600px;
@@ -411,73 +414,112 @@ body {
     margin-top: 2rem;
   }
 }
-/* ==============================
-   NEUMORPHIC NAVBAR
-   ============================== */
 
-   .site-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1001;
-    background: var(--navbar-bg);
-    max-width: 1600px;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  /* Inner flex container */
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 1rem 2rem;
-  }
-  
-  /* Menu */
-  .navbar-menu {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
-  }
-  .navbar-menu li a {
-    position: relative;
-    padding: 0.5rem 1rem;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: var(--border-radius);
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-  /* Soft hover effect */
-  .navbar-menu li a:hover {
-    background: var(--bg-white);
-    box-shadow: inset 4px 4px 8px #bebebe,
-                inset -4px -4px 8px #ffffff;
-    color: #000000;
-  }
-  
-  /* On scroll, deepen the shadow */
-  .site-navbar.sticky {
-    box-shadow: inset 0 0 3px rgba(0,0,0,0.05),
-                var(--shadow-card);
-  }
-  
-  /* Mobile response */
-  @media (max-width: 768px) {
-    .navbar-container {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .navbar-menu {
-      justify-content: space-around;
-      margin-top: 1rem;
-    }
-    .navbar-menu li a {
-      width: 100%;
-      text-align: center;
-    }
-  }
-  
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--neumo-bg);
+  border-radius: var(--radius);
+  box-shadow:
+    5px 5px 15px var(--neumo-shadow-dark),
+   -5px -5px 15px var(--neumo-shadow-light);
+  position: sticky;
+  top: 1rem;
+  margin: 0 1rem;
+  z-index: 100;
+  animation: fadeIn var(--transition);
+}
+
+.navbar .nav-item,
+.navbar #loginBtn {
+  margin-right: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--neumo-bg);
+  box-shadow:
+    4px 4px 10px var(--neumo-shadow-dark),
+   -4px -4px 10px var(--neumo-shadow-light);
+  transition: 
+    box-shadow var(--transition),
+    transform var(--transition),
+    color var(--transition);
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar .nav-item:hover,
+.navbar #loginBtn:hover {
+  box-shadow:
+    inset 4px 4px 10px var(--neumo-shadow-dark),
+    inset -4px -4px 10px var(--neumo-shadow-light);
+  color: #002fff;
+  transform: translateY(1px);
+}
+
+#profileSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+#profileSection img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--neumo-bg);
+  box-shadow:
+    4px 4px 10px var(--neumo-shadow-dark),
+   -4px -4px 10px var(--neumo-shadow-light);
+  object-fit: cover;
+}
+
+#profileSection div {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+#profileSection #userName {
+  font-weight: 600;
+}
+
+#profileSection #userEmail {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+#logoutBtn {
+ margin-right: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--neumo-bg);
+  box-shadow:
+    4px 4px 10px var(--neumo-shadow-dark),
+   -4px -4px 10px var(--neumo-shadow-light);
+  transition: 
+    box-shadow var(--transition),
+    transform var(--transition),
+    color var(--transition);
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#logoutBtn:hover {
+ box-shadow:
+    inset 4px 4px 10px var(--neumo-shadow-dark),
+    inset -4px -4px 10px var(--neumo-shadow-light);
+  color: #ffffff;
+  background: #ff0000;
+  transform: translateY(1px);
+}
+
+/* make sure your fadeIn keyframes still exist */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

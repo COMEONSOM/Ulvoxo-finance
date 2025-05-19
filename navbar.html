@@ -1,18 +1,17 @@
-<!-- navbar.html -->
 <nav class="navbar">
+  <link rel="stylesheet" href="style.css" />
   <a href="/" class="nav-item">Home</a>
+
   <!-- Login button (shows only if not logged in) -->
   <a id="loginBtn" href="login-app/login.html">Login</a>
 
-  <!-- Logout button (shows only if logged in) -->
-  <button id="logoutBtn">Logout</button>
-
   <!-- Profile section (shows only if logged in) -->
   <div id="profileSection">
-    <img id="userPic" src="" alt="Profile Picture"/>
+    <img id="userPic" src="" alt="Profile Picture" />
     <div>
       <div id="userName"></div>
       <div id="userEmail"></div>
+      <button id="logoutBtn">Logout</button> <!-- Moved inside -->
     </div>
   </div>
 </nav>

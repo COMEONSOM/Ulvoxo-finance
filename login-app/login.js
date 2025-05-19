@@ -69,8 +69,7 @@ const firebaseConfig = {
           overlay.id = "welcomeOverlay";
           overlay.innerHTML = `
             <div class="welcome-card">
-              <h1>👋 Hey, ${user.displayName}!</h1>
-              <p>Glad to have you back at BIG Pocket.</p>
+              <h1>👋 Hey, ${user.displayName}! Let's be friends</h1>
             </div>`;
           document.body.appendChild(overlay);
   
@@ -128,8 +127,7 @@ const firebaseConfig = {
         overlay.id = 'welcomeOverlay';
         overlay.innerHTML = `
           <div class="welcome-card">
-            <h1>👋 Hey, ${user.displayName}!</h1>
-            <p>Glad to have you back at BIG Pocket.</p>
+            <h1>👋 Hey, ${user.displayName}! Let's be friends</h1>
           </div>`;
         document.body.appendChild(overlay);
   
