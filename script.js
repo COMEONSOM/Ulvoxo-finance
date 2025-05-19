@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
  /* ───────────── Navbar Load & Sticky ───────────── */
 const navContainer = document.getElementById('navbar-container');
 if (navContainer) {
-  fetch('/navbar.html')
+  fetch('./navbar.html')
     .then(r => r.text())
     .then(html => {
       navContainer.innerHTML = html;

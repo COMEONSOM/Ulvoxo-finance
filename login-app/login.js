@@ -74,7 +74,7 @@ const firebaseConfig = {
           document.body.appendChild(overlay);
   
           setTimeout(() => {
-            window.location.href = "/index.html";
+            window.location.href = "../index.html";
           }, 3000);
         })
         .catch(err => {
@@ -133,7 +133,7 @@ const firebaseConfig = {
   
         // Redirect after 3 seconds
         setTimeout(() => {
-          window.location.href = "/index.html";
+          window.location.href = "../index.html";
         }, 3000);
       })
       .catch(err => {
@@ -173,7 +173,7 @@ const firebaseConfig = {
     if (logoutBtn) {
       logoutBtn.onclick = () => {
         auth.signOut().then(() => {
-          window.location.href = "/login-app/login.html";
+          window.location.href = "./login-app/login.html";
         });
       };
     }
