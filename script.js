@@ -132,10 +132,16 @@ if (navContainer) {
     .then(r => r.text())
     .then(html => {
       navContainer.innerHTML = html;
+
+      // re‑render auth links (you already had this)
       window.renderAuthLinks?.();
+
+      // **now** wire up the menu-toggle
+      window.initNavbarToggle?.();
     })
     .catch(console.error);
 }
+
 
   /* ───────────── Feedback Button ───────────── */
   const fb = document.getElementById('feedback-btn');

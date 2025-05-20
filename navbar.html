@@ -1,17 +1,54 @@
-<nav class="navbar">
+<!-- navbar.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar with Toggle Menu</title>
   <link rel="stylesheet" href="./style.css" />
-  <a href="./index.html" class="nav-item">Home</a>
+</head>
+<body>
+  <nav class="navbar">
+    <!-- Menu Button -->
+    <button
+      id="menuBtn"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="menuDropdown"
+    >
+      ☰ Menu
+    </button>
 
-  <!-- Login button (shows only if not logged in) -->
-  <a id="loginBtn" href="./login-app/login.html">Login</a>
-
-  <!-- Profile section (shows only if logged in) -->
-  <div id="profileSection">
-    <img id="userPic" src="" alt="Profile Picture" />
-    <div>
-      <div id="userName"></div>
-      <div id="userEmail"></div>
-      <button id="logoutBtn">Logout</button> <!-- Moved inside -->
+    <!-- Dropdown Menu -->
+    <div
+      id="menuDropdown"
+      class="menu-dropdown"
+      aria-hidden="true"
+    >
+      <a href="./index.html">Home</a>
+      <a href="#equity">Equity</a>
+      <a href="#gold">Gold</a>
+      <a href="#debt">Debt</a>
+      <a href="#ai">AI</a>
+      <a href="#footer">Contact Us</a>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeWE8WgYihcfL5IQLv_qKCfGrwO5QQJMOua2QIvD4XFzBM4hQ/viewform?usp=header"
+        target="_blank"
+        rel="noopener"
+      >
+        Feedback
     </div>
-  </div>
-</nav>
+
+    <!-- Login button -->
+    <a id="loginBtn" href="./login-app/login.html">Login</a>
+
+    <!-- Profile section -->
+    <div id="profileSection" class="profile-section" hidden>
+      <img id="userPic" src="" alt="Profile Picture" />
+      <div>
+        <div id="userName"></div>
+        <div id="userEmail"></div>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </nav>

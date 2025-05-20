@@ -25,7 +25,7 @@ html {
   --hover-lift: -4px;
   --border-radius: 1rem;
   --highlight: #e74c3c;
-  --neumo-bg: #1a1c23;            /* same as --color-surface */
+  --neumo-bg: #1c1c1c;            /* same as --color-surface */
   --neumo-shadow-dark: rgba(0,0,0,0.6);
   --neumo-shadow-light: rgba(255,255,255,0.05);
 
@@ -420,7 +420,7 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   background: var(--neumo-bg);
-  border-radius: var(--radius);
+  border-radius: 0.25rem;
   box-shadow:
     5px 5px 15px var(--neumo-shadow-dark),
    -5px -5px 15px var(--neumo-shadow-light);
@@ -522,4 +522,101 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+#menuBtn {
+  margin-right: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--neumo-bg);
+  box-shadow:
+    4px 4px 10px var(--neumo-shadow-dark),
+   -4px -4px 10px var(--neumo-shadow-light);
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition),
+    color var(--transition);
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;             /* ensure it matches the login link */
+  cursor: pointer;          /* pointer cursor on hover */
+}
+
+#menuBtn:hover {
+  box-shadow:
+    inset 4px 4px 10px var(--neumo-shadow-dark),
+    inset -4px -4px 10px var(--neumo-shadow-light);
+  color: #002fff;
+  transform: translateY(1px);
+}
+.menu-dropdown {
+   /* keep the element in the flow (for positioning),
+     but hide it visually until “open” */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+  display: flex;             /* always flex, we’ll toggle via visibility/opactiy */
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 1rem;
+  width: 12rem;
+  background: var(--neumo-bg);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+  box-shadow:
+    6px 6px 16px var(--neumo-shadow-dark),
+   -6px -6px 16px var(--neumo-shadow-light);
+  z-index: 100;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* show when open */
+.menu-dropdown.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* links & buttons inside */
+.menu-dropdown a,
+.menu-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  background: var(--neumo-bg);
+  border: none;
+  text-align: left;
+  border-radius: 0.25rem;
+  margin: 0.25rem 0;
+  box-shadow:
+    /* inset for pressed effect on hover-ready items */
+    3px 3px 8px var(--neumo-shadow-dark),
+   -3px -3px 8px var(--neumo-shadow-light);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* hover state gives “pressed‐in” effect */
+.menu-dropdown a:hover,
+.menu-dropdown button:hover {
+  box-shadow:
+    inset 4px 4px 12px var(--neumo-shadow-dark),
+    inset -4px -4px 12px var(--neumo-shadow-light);
+  transform: translateY(1px);
+}
+
+/* optionally style the logout button differently */
+#logoutBtnInMenu {
+  color: var(--highlight);
+  font-weight: 600;
 }
