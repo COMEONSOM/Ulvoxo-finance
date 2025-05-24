@@ -7,10 +7,7 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS CSS -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 </head>
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
 
@@ -100,17 +97,11 @@
         <strong>Join us and experience the X Factorial difference!</strong>
       </p>
     </section>
-
   </main>
 
-  <!-- Back to BIG Pocket Button -->
-  <div class="text-center mb-16" data-aos="fade-up">
-    <a
-      href="../index.html"
-      class="inline-block bg-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 hover:bg-indigo-700"
-    >
-      ← Back to BIG Pocket
-    </a>
+  <!-- Dynamic Buttons -->
+  <div class="text-center mb-16" id="button-container" data-aos="fade-up">
+    <!-- Injected by JavaScript -->
   </div>
 
   <!-- Footer -->
@@ -120,10 +111,40 @@
     </div>
   </footer>
 
-  <!-- AOS JS -->
+  <!-- AOS + Custom Button Logic -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+
+    const ref = document.referrer;
+    const container = document.getElementById('button-container');
+
+    const LINK_BIG = "https://comeonsom.github.io/Big-Pocket.com/";
+    const LINK_ASCORP = "https://ascorp-69412-244cc.web.app/";
+
+    let backLabel = "← Back";
+    let backHref = ref || LINK_ASCORP;
+
+    let visitLabel = "";
+    let visitHref = "";
+
+    if (ref.includes("ascorp-69412-244cc.web.app")) {
+      backLabel = "← Back to ASCORP";
+      visitLabel = "Visit BIG Pocket";
+      visitHref = LINK_BIG;
+    } else if (ref.includes("https://comeonsom.github.io/Big-Pocket.com/")) {
+      backLabel = "← Back to BIG Pocket";
+      visitLabel = "Visit ASCORP";
+      visitHref = LINK_ASCORP;
+    } else {
+      visitLabel = "Visit BIG Pocket";
+      visitHref = LINK_BIG;
+    }
+
+    container.innerHTML = `
+      ${ref ? `<a href="${backHref}" class="inline-block bg-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 hover:bg-indigo-700 mr-4">${backLabel}</a>` : ""}
+      <a href="${visitHref}" class="inline-block bg-purple-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform transition duration-300 hover:scale-105 hover:bg-purple-700">${visitLabel}</a>
+    `;
   </script>
 </body>
 </html>
