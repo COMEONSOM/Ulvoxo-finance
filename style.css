@@ -91,7 +91,6 @@ body {
 
 .equity-segment,
 .gold-segment,
-.debt-segment,
 .emt-segment {
   background: var(--bg-white);
   box-shadow: inset 4px 4px 8px #bebebe,
