@@ -210,14 +210,13 @@ body {
   LOGO
 ================================*/
 .logo {
-  max-width: 96px;
-  min-width: 96px;
-  max-height: 96px;
-  min-height: 96px;
+  max-width: 100%;
+  min-width: 120px;
+  max-height: 120px;
+  min-height: 100px;
   display: block;
   filter: invert();
   margin-bottom: 5px;
-  text-indent: 1px;
 }
 
 /*===================================
